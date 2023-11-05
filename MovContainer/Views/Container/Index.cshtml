@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MovContainer.Models.Container>
+
+<h1>Lista de Containers Cadastrados</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Novo Container</a> |
+    <a asp-controller="Home" asp-action="Index">Home Page</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoSelecionado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusSelecionado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaSelcionada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Empresa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.TipoSelecionado)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.StatusSelecionado)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaSelcionada)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Empresa)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ContainerId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.ContainerId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContainerId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@model MovContainer.Models.Movimentacao
+
+<h1>Apagar Movimentação</h1>
+
+<h3>Você está certo que quer fazer isto??</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MovimentacaoSelecionada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MovimentacaoSelecionada)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataHoraInicio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataHoraInicio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataHoraFim)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataHoraFim)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Container)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Container.Numero)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MovimentacaoId" />
+        <input type="submit" value="Apagar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary">Voltar para Lista</a>
+    </form>
+</div>

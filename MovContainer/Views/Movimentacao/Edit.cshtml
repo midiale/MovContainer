@@ -1,0 +1,47 @@
+﻿@model MovContainer.Models.Movimentacao
+
+<h1>Editar</h1>
+
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MovimentacaoId" />
+            <div class="form-group">
+                <label asp-for="MovimentacaoSelecionada" class="control-label"></label>
+                <select asp-for="MovimentacaoSelecionada" class="form-control"
+                        asp-items="@Html.GetEnumSelectList<TipoDeMovimetacao>()">
+                    <option>Selecione o tipo</option>
+                </select>
+                <span asp-validation-for="MovimentacaoSelecionada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataHoraInicio" class="control-label"></label>
+                <input asp-for="DataHoraInicio" class="form-control" />
+                <span asp-validation-for="DataHoraInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataHoraFim" class="control-label"></label>
+                <input asp-for="DataHoraFim" class="form-control" />
+                <span asp-validation-for="DataHoraFim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContainerId" class="control-label"></label>
+                <select asp-for="ContainerId" class="form-control" asp-items="ViewBag.ContainerId"></select>
+                <span asp-validation-for="ContainerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

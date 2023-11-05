@@ -1,0 +1,59 @@
+﻿@model List<MovContainer.ViewModels.RelatorioViewModel>
+<style>
+    ul {
+        list-style: none; 
+        padding: 0; 
+        margin: 0;
+    }
+</style>
+
+<h2>Relatório de Movimentações</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Tipo de Movimentação</th>
+            <th>Total de Movimentações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empresa in Model)
+        {
+            <tr>
+                <td>@empresa.Empresa</td>
+                <td>
+                    <ul>
+                        @foreach (var tipoMovimentacao in empresa.TiposMovimentacao)
+                        {
+                            <li>@tipoMovimentacao.TipoMovimentacao:</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var tipoMovimentacao in empresa.TiposMovimentacao)
+                        {
+                            <li>@tipoMovimentacao.TotalMovimentacoes</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tr>
+        <th>Total de Importações</th>
+
+        <td>
+            <strong>
+                @ViewBag.Importacao
+            </strong>
+        </td>
+        <th>Total de Exportações</th>
+        <td>
+            <strong>
+                @ViewBag.Exportacao
+            </strong>
+        </td>
+    </tr>
+</table>

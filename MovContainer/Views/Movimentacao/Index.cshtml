@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MovContainer.Models.Movimentacao>
+
+<h1>Lista de Movimentações</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Movimentação</a> |
+    <a asp-controller="Home" asp-action="Index">Home Page</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovimentacaoSelecionada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHoraFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Container)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovimentacaoSelecionada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHoraFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Container.Numero)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MovimentacaoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.MovimentacaoId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovimentacaoId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
